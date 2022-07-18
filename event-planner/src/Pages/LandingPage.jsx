@@ -4,7 +4,7 @@ const LandingPage = () => {
     return (
         <>
         <div>
-            Hello, but in body
+            Hello, this is the landing page
         </div>
         </>
     )

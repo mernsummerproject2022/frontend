@@ -1,9 +1,9 @@
 import { Route, Routes} from 'react-router-dom';
 import Header from './Header';
-import LandingPage from './LandingPage';
-import EventsPage from './EventsPage';
-import LoginPage from './LoginPage';
-import RegisterPage from './RegisterPage';
+import LandingPage from './Pages/LandingPage';
+import EventsPage from './Pages/EventsPage';
+import LoginPage from './Pages/LoginPage';
+import RegisterPage from './Pages/RegisterPage';
 
 function App() {
   return (
