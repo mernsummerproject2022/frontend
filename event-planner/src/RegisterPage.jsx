@@ -6,7 +6,7 @@ const RegisterPage = () => {
     return ( 
         <>
         <div className='register-container'>
-            <h1 className='register-title'>Please sign in</h1>
+            <h1 className='register-title'>Register new account</h1>
 
             <div className='register-area'>
 
