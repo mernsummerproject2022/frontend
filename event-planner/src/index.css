@@ -1,10 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap');
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  
 }
 
 code {
@@ -15,5 +22,144 @@ code {
 .header{
   width: 100%;
   height: 60px;
-  background-color: #11a1ee;
+  background-color: #000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo{
+  font-size: 1.8rem;
+  margin-left: 2rem;
+  color: #fff;
+}
+
+.navlinks{
+  margin-right: 2rem;
+  display: flex;
+  gap: 1rem;
+}
+
+.navlinks a{
+  text-decoration: none;
+  color: #000;
+  background-color: #fff;
+  font-weight: 400;
+  padding: 0.5rem 0.5rem;
+  border-radius: 6px;
+  
+}
+
+.navlinks a:hover{
+  background-color: rgb(199, 199, 199);
+  cursor: pointer;
+  transition: 0.3s all;
+}
+
+
+.login-container{
+  max-width: 40rem;
+  max-height: 25rem;
+  background-color: #000;
+  color: #fff;
+  display: flex;
+  border-radius: 10px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top:0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  
+  margin: auto;
+}
+
+.register-container{
+  max-width: 40rem;
+  max-height: 35rem;
+  background-color: #000;
+  color: #fff;
+  display: flex;
+  border-radius: 10px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top:0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  
+  margin: auto;
+}
+
+
+.login-area,.register-area{
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  gap: 2rem;
+  margin-top: 1.2rem;
+}
+
+.login-area input,.register-area input{
+  padding: 0.5rem 1rem;
+}
+
+.email-area,.password-area,.confirm-password-area{
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.submit-btn{
+  border: none;
+  margin-top: 2rem;
+  padding: 1rem 2rem;
+  font-weight: 500;
+  background-color: #fff;
+  border-radius: 4px;
+}
+
+.submit-btn:hover{
+  cursor: pointer;
+  background-color: rgb(237, 237, 237);
+}
+
+.new-account-text{
+  font-size: 0.5rem;
+  margin-top: 1rem;
+}
+
+.new-account-text a{
+  color: #fff;
+  text-decoration: none;
+}
+
+.new-account-text a:hover{
+  text-decoration: underline;
+}
+
+
+/* REGISTER*/
+
+.register-container{
+  max-width: 40rem;
+  max-height: 35rem;
+  background-color: #000;
+  color: #fff;
+  display: flex;
+  border-radius: 10px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top:0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  
+  margin: auto;
 }

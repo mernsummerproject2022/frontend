@@ -5,10 +5,12 @@ import './index.css';
 const Header = () => {
     return (
         <header className='header'>
-            Here comes the logo.
+           <h1 className='logo'>Events Planner</h1>
+            <div className='navlinks'>
             <Link to='/myEvents'>My events</Link>
             <Link to='/events'>All events</Link>
             <Link to='/login'>Sign in</Link>
+            </div>
         </header>
     )
 };
