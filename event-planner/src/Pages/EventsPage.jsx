@@ -4,9 +4,9 @@ import Event from '../Components/Event';
 
 const EventsPage = () => {
     return ( 
-        <div>
-            <div>Newest Events</div>
-            <div>
+        <div className='events_page'>
+            <h1 className='newest_events'>Newest Events</h1>
+            <div className='search'>
                 <label>Search by:</label>
                 <select>
                     <option>date</option>
