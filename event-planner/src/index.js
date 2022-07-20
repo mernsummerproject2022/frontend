@@ -1,7 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
-import './index.css';
+
+import './Styling/index.css';
+import './Styling/login.css';
+import './Styling/register.css';
+import './Styling/event-container.css';
+import './Styling/events-page.css';
+
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
