@@ -25,7 +25,16 @@ function EventCreate() {
             name="event-date"
             autoComplete="none"
           />
+
+          <textarea
+            name="Text1"
+            cols="40"
+            rows="3"
+            placeholder="About this event..."
+          ></textarea>
         </div>
+
+        <input type="submit" className="create-btn" value={"CREATE"} />
       </div>
     </div>
   );
