@@ -86,8 +86,8 @@ export default class App extends Component {
                 </div>
                 <div className="new-account-text">
                   <h2>
-                    Don't have an account?
-                    <Link to="/login"> Create a new one</Link>
+                    Already have an account?
+                    <Link to="/login"> Sign In</Link>
                   </h2>
                 </div>
               </form>
