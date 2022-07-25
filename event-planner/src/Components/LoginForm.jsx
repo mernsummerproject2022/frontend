@@ -51,7 +51,7 @@ class LoginPage extends React.Component {
                       type="submit"
                       disabled={isSubmitting}
                     >
-                      Submit
+                      LOG IN
                     </button>
                   </Form>
                 );
