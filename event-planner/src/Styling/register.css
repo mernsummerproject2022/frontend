@@ -1,0 +1,87 @@
+.register-container{
+    max-width: 40rem;
+    max-height: 35rem;
+    background-color: #000;
+    color: #fff;
+    display: flex;
+    border-radius: 10px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    
+    margin: auto;
+  }
+  
+  
+  .register-area{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    gap: 2rem;
+    margin-top: 1.2rem;
+  }
+  
+  .register-area input{
+    padding: 0.5rem 1rem;
+  }
+  
+  .email-area,.password-area,.confirm-password-area{
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+  
+  .submit-btn{
+    border: none;
+    margin-top: 2rem;
+    padding: 1rem 2rem;
+    font-weight: 500;
+    background-color: #fff;
+    border-radius: 4px;
+  }
+  
+  .submit-btn:hover{
+    cursor: pointer;
+    background-color: rgb(237, 237, 237);
+  }
+  
+  .new-account-text{
+    font-size: 0.5rem;
+    margin-top: 1rem;
+  }
+  
+  .new-account-text a{
+    color: #fff;
+    text-decoration: none;
+  }
+  
+  .new-account-text a:hover{
+    text-decoration: underline;
+  }
+  
+  
+  /* REGISTER*/
+  
+  .register-container{
+    max-width: 40rem;
+    max-height: 35rem;
+    background-color: #000;
+    color: #fff;
+    display: flex;
+    border-radius: 10px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    
+    margin: auto;
+  }
