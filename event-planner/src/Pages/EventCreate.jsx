@@ -19,6 +19,7 @@ function EventCreate() {
             name="event-location"
             autoComplete="none"
           />
+
           <input
             type="date"
             placeholder="Date"
