@@ -17,26 +17,11 @@
   margin: auto;
 }
 
-form {
-  display: flex;
-  flex-direction: column;
-  gap: 0.3rem;
-}
-
-label h3 {
-  font-weight: 300;
-  font-size: 1rem;
-}
-
-.field {
-  width: 100%;
-}
-
 .login-area {
   display: flex;
   flex-direction: column;
   width: 50%;
-  gap: 1rem;
+  gap: 2rem;
   margin-top: 1.2rem;
 }
 
@@ -54,7 +39,7 @@ label h3 {
 
 .submit-btn {
   border: none;
-  margin-top: 1rem;
+  margin-top: 2rem;
   padding: 1rem 2rem;
   font-weight: 500;
   background-color: #fff;
