@@ -28,6 +28,13 @@ function EventCreate() {
           />
 
           <input
+            type="number"
+            placeholder="Duration in minutes"
+            name="duration"
+            autoComplete="none"
+          />
+
+          <input
             type="date"
             placeholder="Date"
             name="event-date"
