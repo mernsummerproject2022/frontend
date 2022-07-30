@@ -1,4 +1,5 @@
 import React from "react";
+import NumericInput from "react-numeric-input";
 
 function EventCreate() {
   return (
@@ -27,15 +28,11 @@ function EventCreate() {
             autocomplete="none"
           />
 
-          <input
-            type="number"
-            placeholder="Duration in minutes"
-            name="duration"
-            autoComplete="none"
-          />
+          <NumericInput min={0} placeholder="Duration in minutes" />
 
           <input
             type="date"
+            min="0"
             placeholder="Date"
             name="event-date"
             autoComplete="none"
