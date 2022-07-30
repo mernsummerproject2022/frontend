@@ -38,13 +38,21 @@ class LoginPage extends React.Component {
                       <h3>Email</h3>
                     </label>
                     <Field className="field" type="email" name="email" />
-                    <ErrorMessage name="email" component="div" />
+                    <ErrorMessage
+                      name="email"
+                      component="div"
+                      className="error"
+                    />
 
                     <label>
                       <h3>Password</h3>
                     </label>
                     <Field className="field" type="password" name="password" />
-                    <ErrorMessage name="password" component="div" />
+                    <ErrorMessage
+                      name="password"
+                      component="div"
+                      className="error"
+                    />
 
                     <button
                       className="submit-btn"

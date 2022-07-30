@@ -6,6 +6,16 @@ import * as Yup from "yup";
 const SignupSchema = Yup.object().shape({
   email: Yup.string().email("Invalid email").required("Required"),
   password: Yup.string().min(6, "Too Short!").required("Required"),
+  confirm: Yup.string()
+    .required("Required")
+    .when("password", {
+      is: (val) => (val && val.length > 0 ? true : false),
+      then: Yup.string().oneOf(
+        [Yup.ref("password")],
+        "Both password need to be the same"
+      ),
+    }),
+
   timestamp: Yup.date().default(() => new Date()),
 });
 
@@ -22,7 +32,7 @@ export default class App extends Component {
     return (
       <div>
         <Formik
-          initialValues={{ email: "", password: "" }}
+          initialValues={{ email: "", password: "", confirm: "" }}
           // pass api results to initialValues as props
           validationSchema={SignupSchema}
           onSubmit={(values) => {
@@ -61,6 +71,7 @@ export default class App extends Component {
                       <p style={{ color: "red" }}>{errors.email}</p>
                     )}
                   </div>
+
                   <div className="password-area">
                     <label>
                       <h3>Password *</h3>
@@ -80,6 +91,26 @@ export default class App extends Component {
                       <p style={{ color: "red" }}>{errors.password}</p>
                     )}
                   </div>
+
+                  <div className="confirm-password-area">
+                    <label>
+                      <h3>Confirm Password *</h3>
+                      <input
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        value={values.confirm}
+                        border={
+                          touched.confirm && errors.confirm && "1px solid red"
+                        }
+                        type="password"
+                        name="confirm"
+                      />
+                    </label>
+                    {touched.confirm && errors.confirm && (
+                      <p style={{ color: "red" }}>{errors.confirm}</p>
+                    )}
+                  </div>
+
                   <button className="submit-btn" type="submit">
                     REGISTER
                   </button>
