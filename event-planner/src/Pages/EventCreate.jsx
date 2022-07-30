@@ -11,37 +11,26 @@ function EventCreate() {
           <input
             type="text"
             placeholder="Event title"
-            name="event-title"
+            name="name"
             autoComplete="none"
           />
           <input
             type="text"
-            placeholder="Location"
-            name="event-location"
+            placeholder="Event type"
+            name="eventType"
             autoComplete="none"
           />
 
-          <input
-            type="number"
-            placeholder="Max players"
-            name="max-players"
-            autocomplete="none"
-          />
+          <NumericInput min={0} placeholder="Max players" name="maxPlayers" />
 
-          <NumericInput min={0} placeholder="Duration in minutes" />
-
-          <input
-            type="date"
-            min="0"
-            placeholder="Date"
-            name="event-date"
-            autoComplete="none"
+          <NumericInput
+            min={0}
+            placeholder="Duration in minutes"
+            name="duration"
           />
 
           <textarea
-            name="Text1"
-            cols="40"
-            rows="3"
+            name="description"
             placeholder="About this event..."
           ></textarea>
         </div>
