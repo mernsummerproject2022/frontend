@@ -21,6 +21,13 @@ function EventCreate() {
           />
 
           <input
+            type="number"
+            placeholder="Max players"
+            name="max-players"
+            autocomplete="none"
+          />
+
+          <input
             type="date"
             placeholder="Date"
             name="event-date"
