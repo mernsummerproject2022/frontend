@@ -104,7 +104,6 @@ export default class App extends Component {
                         }
                         type="password"
                         name="confirm"
-                        placeholder="Password"
                       />
                     </label>
                     {touched.confirm && errors.confirm && (
