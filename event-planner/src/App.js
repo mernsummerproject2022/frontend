@@ -5,11 +5,13 @@ import EventsPage from "./Pages/EventsPage";
 import LoginPage from "./Pages/LoginPage";
 import RegisterPage from "./Pages/RegisterPage";
 import EventCreate from "./Pages/EventCreate";
+import AppProvider from "./context/AppProvider";
 
 function App() {
   return (
     <>
       <div>
+        <AppProvider>
         <Header />
         <Routes>
           <Route path="/" element={<LandingPage />} />
@@ -18,6 +20,7 @@ function App() {
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/create" element={<EventCreate />} />
         </Routes>
+        </AppProvider>
       </div>
     </>
   );
