@@ -1,4 +1,4 @@
-import React , {useContext, useEffect} from 'react';
+import React , {useContext} from 'react';
 import EventList from '../Components/EventList';
 import Searchbar from '../Components/Searchbar';
 import {AppProviderContext} from '../context/AppProvider';

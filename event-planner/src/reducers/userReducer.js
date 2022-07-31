@@ -9,49 +9,37 @@ import {
   
   const initialState = {
     /* The initial state of the component */
-    authenticated: false,
-    status: '',
-    message: ''
+    auth: false,
+    signup: false,
+    error: null,
   };
  
   const userReducer = (state=initialState, action) => {
     switch (action.type /* The reducer listening for action to update store */) {
       case SIGN_UP_SUCCESS: {
+        state.signup = true;
         return {
           ...state,
-          status: 'Success',
-          message: action.payload.message,
-          ...action.payload.user,
-          ...action.payload.data,
-          authenticated: true
         };
       }
       case SIGN_UP_ERROR: {
+        state.signup = false;
+        state.error = action.payload;
         return {
           ...state,
-          status: 'Unsuccessful' || undefined,
-          message: action.payload.message,
-          error: action.payload.error,
-          authenticated: false
         };
       }
       case SIGN_IN_SUCCESS: {
+        state.auth = true;
         return {
           ...state,
-          status: 'Success',
-          message: action.payload.message,
-          ...action.payload.user,
-          ...action.payload.data,
-          authenticated: true
         };
       }
       case SIGN_IN_ERROR: {
+        state.auth = false;
+        state.error = action.payload.error;
         return {
           ...state,
-          status: 'Unsuccessful' || undefined,
-          message: action.payload.message,
-          error: action.payload.error,
-          authenticated: false
         };
       }
       

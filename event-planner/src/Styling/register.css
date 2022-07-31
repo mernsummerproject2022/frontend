@@ -1,6 +1,6 @@
 .register-container {
   max-width: 30rem;
-  height: 30rem;
+  height: 45rem;
   background-color: red;
   color: #fff;
   display: flex;
@@ -33,7 +33,8 @@
 }
 
 .email-area,
-.password-area {
+.password-area,
+.confirm-password-area {
   display: flex;
   flex-direction: column;
   width: 80%;

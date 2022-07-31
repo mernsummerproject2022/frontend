@@ -1,7 +1,6 @@
-import React,{useContext,useEffect} from 'react';
+import React from 'react';
 import Event from '../Components/Event';
-import {events} from '../utils/mockedData';
-import {AppProviderContext} from '../context/AppProvider';
+
 
 const EventList = ({state,actions}) => {
     

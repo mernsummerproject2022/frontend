@@ -30,7 +30,7 @@ export const signUp = async (dispatch, body) => {
     }
     // localStorage.setItem("token", response.data.data.token);
     alert("Successfully signed up");
-    dispatch({
+    return dispatch({
       type: SIGN_UP_SUCCESS,
       payload: data,
     });
