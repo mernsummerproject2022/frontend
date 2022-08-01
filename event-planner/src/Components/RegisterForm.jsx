@@ -36,6 +36,7 @@ const RegisterForm = ({state,actions}) => {
       alert("Signup successful");
       navigate("/login");
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [state.userReducer.signup]);
 
 
@@ -111,6 +112,7 @@ const RegisterForm = ({state,actions}) => {
                     }
                     type="password"
                     name="confirmPassword"
+                    placeholder="Confirm Password"
                   />
                 </label>
                 {touched.confirmPassword && errors.confirmPassword && (
