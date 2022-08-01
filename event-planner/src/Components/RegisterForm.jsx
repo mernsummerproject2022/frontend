@@ -1,12 +1,14 @@
-import React, { Component } from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Formik } from "formik";
 import * as Yup from "yup";
+import { useNavigate } from "react-router-dom";
+
 
 const SignupSchema = Yup.object().shape({
   email: Yup.string().email("Invalid email").required("Required"),
   password: Yup.string().min(6, "Too Short!").required("Required"),
-  confirm: Yup.string()
+  confirmPassword: Yup.string()
     .required("Required")
     .when("password", {
       is: (val) => (val && val.length > 0 ? true : false),
@@ -19,113 +21,122 @@ const SignupSchema = Yup.object().shape({
   timestamp: Yup.date().default(() => new Date()),
 });
 
-export default class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
+const RegisterForm = ({state,actions}) => {
+  let navigate = useNavigate();
+ 
+
+
+  const handleSubmit = (values) => {
+
+    actions.signUp(values);
   }
 
-  componentDidMount() {
-    // make the service call to get initial values of form
-  }
-  render() {
-    return (
-      <div>
-        <Formik
-          initialValues={{ email: "", password: "", confirm: "" }}
-          // pass api results to initialValues as props
-          validationSchema={SignupSchema}
-          onSubmit={(values) => {
-            console.log(values);
-            // call service
-          }}
-          render={({
-            touched,
-            errors,
-            values,
-            handleChange,
-            handleBlur,
-            handleSubmit,
-          }) => (
-            <div className="register-container">
-              <form onSubmit={handleSubmit}>
-                <div className="register-area">
-                  <h1>Register a new account</h1>
+  useEffect(() => {
+    if (state.userReducer.signup) {
+      alert("Signup successful");
+      navigate("/login");
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [state.userReducer.signup]);
 
-                  <div className="email-area">
-                    <label>
-                      <h3>Email *</h3>
-                      <input
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                        value={values.email}
-                        border={
-                          touched.email && errors.email && "1px solid red"
-                        }
-                        type="text"
-                        name="email"
-                        placeholder="Email"
-                      />
-                    </label>
-                    {touched.email && errors.email && (
-                      <p style={{ color: "red" }}>{errors.email}</p>
-                    )}
-                  </div>
 
-                  <div className="password-area">
-                    <label>
-                      <h3>Password *</h3>
-                      <input
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                        value={values.password}
-                        border={
-                          touched.password && errors.password && "1px solid red"
-                        }
-                        type="password"
-                        name="password"
-                        placeholder="Password"
-                      />
-                    </label>
-                    {touched.password && errors.password && (
-                      <p style={{ color: "red" }}>{errors.password}</p>
-                    )}
-                  </div>
+  return (
+    <div>
+    <Formik
+      initialValues={{ email: "", password: "", confirmPasswordPassword: "" }}
+      // pass api results to initialValues as props
+      validationSchema={SignupSchema}
+      onSubmit={handleSubmit}
+      render={({
+        touched,
+        errors,
+        values,
+        handleChange,
+        handleBlur,
+        handleSubmit,
+      }) => (
+        <div className="register-container">
+          <form onSubmit={handleSubmit}>
+            <div className="register-area">
+              <h1>Register a new account</h1>
 
-                  <div className="confirm-password-area">
-                    <label>
-                      <h3>Confirm Password *</h3>
-                      <input
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                        value={values.confirm}
-                        border={
-                          touched.confirm && errors.confirm && "1px solid red"
-                        }
-                        type="password"
-                        name="confirm"
-                      />
-                    </label>
-                    {touched.confirm && errors.confirm && (
-                      <p style={{ color: "red" }}>{errors.confirm}</p>
-                    )}
-                  </div>
+              <div className="email-area">
+                <label>
+                  <h3>Email *</h3>
+                  <input
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.email}
+                    border={
+                      touched.email && errors.email && "1px solid red"
+                    }
+                    type="text"
+                    name="email"
+                    placeholder="Email"
+                  />
+                </label>
+                {touched.email && errors.email && (
+                  <p style={{ color: "red" }}>{errors.email}</p>
+                )}
+              </div>
 
-                  <button className="submit-btn" type="submit">
-                    REGISTER
-                  </button>
-                </div>
-                <div className="new-account-text">
-                  <h2>
-                    Already have an account?
-                    <Link to="/login"> Sign In</Link>
-                  </h2>
-                </div>
-              </form>
+              <div className="password-area">
+                <label>
+                  <h3>Password *</h3>
+                  <input
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.password}
+                    border={
+                      touched.password && errors.password && "1px solid red"
+                    }
+                    type="password"
+                    name="password"
+                    placeholder="Password"
+                  />
+                </label>
+                {touched.password && errors.password && (
+                  <p style={{ color: "red" }}>{errors.password}</p>
+                )}
+              </div>
+
+              <div className="confirm-password-area">
+                <label>
+                  <h3>Confirm Password *</h3>
+                  <input
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.confirmPassword}
+                    border={
+                      touched.confirmPassword && errors.confirmPassword && "1px solid red"
+                    }
+                    type="password"
+                    name="confirmPassword"
+                    placeholder="Confirm Password"
+                  />
+                </label>
+                {touched.confirmPassword && errors.confirmPassword && (
+                  <p style={{ color: "red" }}>{errors.confirmPassword}</p>
+                )}
+              </div>
+
+              <button className="submit-btn" type="submit">
+                REGISTER
+              </button>
             </div>
-          )}
-        />
-      </div>
-    );
-  }
-}
+            <div className="new-account-text">
+              <h2>
+                Already have an account?
+                <Link to="/login"> Sign In</Link>
+              </h2>
+            </div>
+          </form>
+        </div>
+      )}
+    />
+  </div>
+  );
+};
+export default RegisterForm;
+
+
