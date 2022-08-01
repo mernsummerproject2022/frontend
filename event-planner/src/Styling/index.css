@@ -21,26 +21,61 @@ code {
 .landing {
   background-image: linear-gradient(
       0deg,
-      rgba(66, 60, 63, 0.8),
-      rgba(0, 0, 0, 0.8)
+      rgba(66, 60, 63, 1),
+      rgba(0, 0, 0, 0.7)
     ),
     url("/src/img/bg.jpg");
   height: 100vh;
-  background-position: center;
+  background-position: center center;
   background-repeat: no-repeat;
+  background-attachment: fixed;
   background-size: cover;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 }
 
 .landing-text {
-  margin-top: 5rem;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 8rem;
 }
 
 .heading {
   color: #fff;
-  font-size: 3rem;
   font-weight: 600;
+  font-size: 2rem;
+  width: 60%;
+  text-align: center;
+}
+
+.heading p {
+  font-weight: 100;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.landing-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.landing-btn {
+  text-decoration: none;
+  color: #000;
+  background-color: rgb(194, 155, 82);
+  padding: 0.6rem 1.4rem;
+  border-radius: 6px;
+}
+
+.landing-btn:hover {
+  transition: 0.4s all;
+  background-color: #fff;
+  color: #000;
 }
