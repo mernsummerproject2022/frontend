@@ -1,8 +1,8 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect }  from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import * as Yup from "yup";
 
+import * as Yup from "yup";
 const loginSchema = Yup.object().shape({
   password: Yup.string()
     .min(8, "Too Short!")
@@ -11,25 +11,36 @@ const loginSchema = Yup.object().shape({
   email: Yup.string().email("Invalid email").required("Required"),
 });
 
-class LoginPage extends React.Component {
-  handleSubmit = (values, { setSubmitting }) => {
+
+const LoginForm = ({state,actions}) => {
+  
+  let navigate = useNavigate();
+
+  const handleSubmit = (values, { setSubmitting }) => {
     setTimeout(() => {
       alert(JSON.stringify(values, null, 2));
       setSubmitting(false);
     }, 400);
-  };
+    actions.signIn(values);
+    
+};
 
-  render() {
-    return (
-      <>
-        <div className="login-container">
-          <h1 className="login-title">Please sign in</h1>
+useEffect(() => {
+  if (state.userReducer.auth) {
+    navigate("/");
+  }
+}, [state.userReducer.auth]);
+  
 
+
+  return (
+    <div className="login-container">
+      <h1 className="login-title">Please sign in</h1>
           <div className="login-area">
             <Formik
               initialValues={{ email: "", password: "" }}
               validationSchema={loginSchema}
-              onSubmit={this.handleSubmit}
+              onSubmit={handleSubmit}
             >
               {({ isSubmitting }) => {
                 return (
@@ -38,13 +49,21 @@ class LoginPage extends React.Component {
                       <h3>Email</h3>
                     </label>
                     <Field className="field" type="email" name="email" />
-                    <ErrorMessage name="email" component="div" />
+                    <ErrorMessage
+                      name="email"
+                      component="div"
+                      className="error"
+                    />
 
                     <label>
                       <h3>Password</h3>
                     </label>
                     <Field className="field" type="password" name="password" />
-                    <ErrorMessage name="password" component="div" />
+                    <ErrorMessage
+                      name="password"
+                      component="div"
+                      className="error"
+                    />
 
                     <button
                       className="submit-btn"
@@ -64,11 +83,9 @@ class LoginPage extends React.Component {
               Don't have an account?
               <Link to="/register"> Create a new one</Link>
             </h2>
-          </div>
-        </div>
-      </>
-    );
-  }
+         </div>
+    </div>
+  );
 }
+export default LoginForm;
 
-export default LoginPage;

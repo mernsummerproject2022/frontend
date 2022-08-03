@@ -6,11 +6,13 @@ import LoginPage from "./Pages/LoginPage";
 import RegisterPage from "./Pages/RegisterPage";
 import EventCreate from "./Pages/EventCreate";
 import EventView from "./Pages/ViewEventPage";
+import AppProvider from "./context/AppProvider";
 
 function App() {
   return (
     <>
       <div>
+        <AppProvider>
         <Header />
         <Routes>
           <Route path="/" element={<LandingPage />} />
@@ -20,6 +22,7 @@ function App() {
           <Route path="/create" element={<EventCreate />} />
           <Route path="/view" element={<EventView />} />
         </Routes>
+        </AppProvider>
       </div>
     </>
   );

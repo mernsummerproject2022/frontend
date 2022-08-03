@@ -1,4 +1,5 @@
 import React from "react";
+import NumericInput from "react-numeric-input";
 
 function EventCreate() {
   return (
@@ -10,27 +11,26 @@ function EventCreate() {
           <input
             type="text"
             placeholder="Event title"
-            name="event-title"
+            name="name"
             autoComplete="none"
           />
           <input
             type="text"
-            placeholder="Location"
-            name="event-location"
+            placeholder="Event type"
+            name="eventType"
             autoComplete="none"
           />
 
-          <input
-            type="date"
-            placeholder="Date"
-            name="event-date"
-            autoComplete="none"
+          <NumericInput min={0} placeholder="Max players" name="maxPlayers" />
+
+          <NumericInput
+            min={0}
+            placeholder="Duration in minutes"
+            name="duration"
           />
 
           <textarea
-            name="Text1"
-            cols="40"
-            rows="3"
+            name="description"
             placeholder="About this event..."
           ></textarea>
         </div>
