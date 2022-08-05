@@ -44,47 +44,52 @@ export const events = JSON.stringify([
 ]);
 
 export const singularEvent = {
-    id: 0,
-    title: "Football time or som'",
-    location: "Above the Dock",
-    time: "18:00",
-    date: "2022-08-14",
-    description: `Above the quiet dock in mid night,
+  id: 0,
+  name: "Football time or som'",
+  location: { name: "Above the Dock" },
+  time: "18:00",
+  dateTime: "2022-08-14",
+  description: `Above the quiet dock in mid night,
     Tangled in the tall mast’s corded height,
     Hangs the moon. What seemed so far away
     Is but a child’s balloon, forgotten after play.`,
-    duration: 90,
-    type: "football",
-    maxPlayers: 11,
-    invites: [
-      {
-        user: 'user0@gmail.com',
-        status: 'accepted'
-      },
-      {
-        user: 'user1@gmail.com',
-        status: 'accepted'
-      },
-      {
-        user: 'user2@gmail.com',
-        status: 'declined'
-      },
-      {
-        user: 'user3@gmail.com',
-        status: 'sent'
-      },
-      {
-        user: 'user4@gmail.com',
-        status: 'declined'
-      },
-      {
-        user: 'user5@gmail.com',
-        status: 'sent'
-      },
-      {
-        user: 'user6@gmail.com',
-        status: 'accepted'
-      }
-    ],
-    owner: true
-  };
+  duration: 90,
+  eventType: "football",
+  maxPlayers: 11,
+  invites: [
+    {
+      user: "user0@gmail.com",
+      accepted: "accepted",
+    },
+    {
+      user: "user1@gmail.com",
+      accepted: "accepted",
+    },
+    {
+      user: "user2@gmail.com",
+      accepted: "declined",
+    },
+    {
+      user: "user3@gmail.com",
+      accepted: "sent",
+    },
+    {
+      user: "user4@gmail.com",
+      accepted: "declined",
+    },
+    {
+      user: "user5@gmail.com",
+      accepted: "sent",
+    },
+    {
+      user: "user6@gmail.com",
+      accepted: "accepted",
+    },
+  ],
+  owner: true,
+  requests: [
+    {
+      user: "user6@gmail.com",
+    },
+  ],
+};

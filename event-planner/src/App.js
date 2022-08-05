@@ -20,7 +20,7 @@ function App() {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/create" element={<EventCreate />} />
-          <Route path="/view" element={<EventView />} />
+          <Route path="/view/:id" element={<EventView />} />
         </Routes>
         </AppProvider>
       </div>
