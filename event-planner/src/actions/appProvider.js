@@ -1,5 +1,6 @@
 import * as userActions from "./userActions";
 import * as eventActions from "./eventActions";
+import * as inviteActions from "./inviteActions";
 
 export const appProviderActions = (dispatch) => {
   return {
@@ -10,5 +11,6 @@ export const appProviderActions = (dispatch) => {
     getEventDetails: (eventId) => eventActions.getEventDetails(dispatch, eventId),
     getMyEvents: (userId) => eventActions.getMyEvents(dispatch, userId),
     addEvent: (eventData) => eventActions.addEvent(dispatch, eventData),
+    sendInvite: (inviteData) => inviteActions.sendInvite(dispatch, inviteData),
   };
 };

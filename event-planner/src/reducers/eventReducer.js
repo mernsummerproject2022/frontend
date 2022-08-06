@@ -13,6 +13,7 @@ const initialState = {
   /* The initial state of the component */
   events: [],
   myEvents: [],
+  event: {},
   error: null,
 };
 

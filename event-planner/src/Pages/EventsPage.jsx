@@ -17,26 +17,11 @@ const EventsPage = () => {
     // }, []);
     // console.log(state.eventReducer);
 
+    
     // useEffect(() => {
-    //     actions.addEvent({
-    //         "name": "second event",
-    //         "description": "one event",
-    //         "dateTime": "2022-08-14T18:25:43.511Z",
-    //         "deadline": "2022-08-15T18:25:43.511Z",
-    //         "duration": 2,
-    //         "maxPlayers": 12,
-    //         "location": {
-    //         "name": "address",
-    //         "lat": null,
-    //         "long": null
-    //         },
-    //         "owner": {
-    //         "id":"62ee72c1d629d700221b80aa",
-    //         "email": "example@gmail.com"
-    //         },
-    //        "eventType": "tennis"
-    //        });
+    //     actions.sendInvite({event: "62ee72f3d629d700221b80b3", user: "balicigabriel59@gmail.com"});
     // }, []);
+
     console.log(state.eventReducer);
     console.log(state.userReducer)
     return ( 

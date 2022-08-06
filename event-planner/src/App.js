@@ -2,6 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import Header from "./Header";
 import LandingPage from "./Pages/LandingPage";
 import EventsPage from "./Pages/EventsPage";
+import MyEventsPage from "./Pages/MyEvents";
 import LoginPage from "./Pages/LoginPage";
 import RegisterPage from "./Pages/RegisterPage";
 import EventCreate from "./Pages/EventCreate";
@@ -17,6 +18,7 @@ function App() {
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path="/events" element={<EventsPage />} />
+          <Route path="/myEvents" element={<MyEventsPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/create" element={<EventCreate />} />
