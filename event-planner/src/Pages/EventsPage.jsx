@@ -3,6 +3,7 @@ import EventList from '../Components/EventList';
 import Searchbar from '../Components/Searchbar';
 import {AppProviderContext} from '../context/AppProvider';
 
+
 const EventsPage = () => {
     const {state,actions} = useContext(AppProviderContext);
     // useEffect(() => {
