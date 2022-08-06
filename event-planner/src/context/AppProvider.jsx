@@ -5,16 +5,7 @@ import { userReducer, eventReducer, inviteReducer } from "../utils/constants";
 export const AppProviderContext = createContext(null);
 
 const AppProvider = ({ children }) => {
-  const location={
-    name: "",
-    lat: null,
-    long: null
-  }
-
-  const eventType={
-    name: "",
-  }
-
+  
   const [state, dispatch] = useReducer(appReducer, {
     userReducer,
     eventReducer,
