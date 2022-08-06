@@ -1,24 +1,24 @@
-import React from 'react';
+import React,{useContext, useEffect} from 'react';
+import { useParams } from 'react-router-dom';
 import EventDetails from '../Components/EventDetails';
-import { singularEvent } from '../utils/mockedData';
+import { AppProviderContext } from '../context/AppProvider';
+
 
 const EventView = () => {
+    let { id } = useParams();
+    const {state, actions } = useContext(AppProviderContext);
+    useEffect(() => {
+        actions.getEventDetails(id);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    } , []);
 
-    return ( 
-        <div className='events_page'>
-            <EventDetails 
-            title={singularEvent.title} 
-            description={singularEvent.description} 
-            location={singularEvent.location} 
-            time={singularEvent.time} 
-            date={singularEvent.date} 
-            duration={singularEvent.duration} 
-            type={singularEvent.type} 
-            maxPlayers={singularEvent.maxPlayers} 
-            invites={singularEvent.invites} 
-            owner={singularEvent.owner}/>
+    const event = state.eventReducer.event;
+    console.log(event);
+    return (
+        <div className="events_page">
+          <EventDetails event={event} />
         </div>
-    )
+      );
 };
 
 export default EventView;

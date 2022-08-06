@@ -1,0 +1,68 @@
+import { APPLICATION_JSON } from "../utils/constants";
+export const fetchWrapper = { get, post, put };
+
+const commonHeaders = {
+  "Content-Type": APPLICATION_JSON,
+  Accept: APPLICATION_JSON,
+  Authorization: localStorage.getItem("token"),
+};
+
+
+
+async function get(url) {
+  const requestOptions = {
+    method: "GET",
+    headers: {
+      "Content-Type": APPLICATION_JSON,
+      Accept: APPLICATION_JSON,
+      Authorization: localStorage.getItem("token"),
+    },
+    withCredentials: true,
+  };
+  const response = await fetch(url, requestOptions);
+  return response;
+}
+
+async function post(url, body) {
+  const requestOptions = {
+    method: "POST",
+    headers:{
+      "Content-Type": APPLICATION_JSON,
+      Accept: APPLICATION_JSON,
+      Authorization: localStorage.getItem("token"),
+    },
+    withCredentials: true,
+    body: JSON.stringify(body),
+  };
+  const response = await fetch(url, requestOptions);
+  return response;
+}
+
+async function put(url, body) {
+  const requestOptions = commonHeaders;
+  const response = await fetch(url, requestOptions);
+  return response;
+}
+
+export const handleResponse = async (dispatch, response, type) => {
+  const data = await response.json();
+  if (!response.ok) {
+    console.log(data);
+    alert(data.detail);
+    return dispatch({
+      type: `${type}_ERROR`,
+      payload: data,
+    });
+  }
+  if(type==="SIGN_IN"){
+    localStorage.setItem("token", data.token);
+  }
+  if(type==="SIGN_UP"){
+    localStorage.setItem("signup", true);
+  }
+
+  return dispatch({
+    type: `${type}_SUCCESS`,
+    payload: data,
+  });
+};

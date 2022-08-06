@@ -14,14 +14,17 @@ const loginSchema = Yup.object().shape({
 
 const LoginForm = ({state,actions}) => {
   
+  
   let navigate = useNavigate();
 
-  const handleSubmit = (values, { setSubmitting }) => {
+  const handleSubmit = async (values, { setSubmitting }) => {
     setTimeout(() => {
       alert(JSON.stringify(values, null, 2));
       setSubmitting(false);
     }, 400);
-    actions.signIn(values);
+    await actions.signIn(values);
+    window.location.reload();
+    
     
 };
 
@@ -29,6 +32,7 @@ useEffect(() => {
   if (state.userReducer.auth) {
     navigate("/");
   }
+// eslint-disable-next-line react-hooks/exhaustive-deps
 }, [state.userReducer.auth]);
   
 
