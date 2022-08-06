@@ -5,12 +5,12 @@ const EventDetails = ({ event }) => {
     ? event.invites
     : event.invites.filter((invite) => invite.accepted === "accepted");
   const renderRequests = event.owner && event.requests.length ? true : false;
-
+    console.log(event);
   return (
     <div className="wrapper">
       <div className="eventDetailsContainer">
         <h1>{event.name}</h1>
-        <h4>{event.eventType}</h4>
+        <h4>{event.eventType.name}</h4>
         <h2>{event.description}</h2>
         <h3>
           Location:<span>{event.location.name}</span>
