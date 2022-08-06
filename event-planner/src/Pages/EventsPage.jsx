@@ -6,21 +6,12 @@ import {AppProviderContext} from '../context/AppProvider';
 
 const EventsPage = () => {
     const {state,actions} = useContext(AppProviderContext);
-    // useEffect(() => {
-    // actions.getEventDetails("62e5856fdac1e65a97ab996f");
-    // }, []);
-    // console.log(state.eventReducer);
-    // console.log(state.userReducer);
-    // console.log(localStorage.getItem("token"));
-    // useEffect(() => {
-    //     actions.getMyEvents("62e4039355eb9c8042a317af");
-    // }, []);
-    // console.log(state.eventReducer);
 
     
     // useEffect(() => {
     //     actions.sendInvite({event: "62ee72f3d629d700221b80b3", user: "balicigabriel59@gmail.com"});
     // }, []);
+
 
     console.log(state.eventReducer);
     console.log(state.userReducer)
