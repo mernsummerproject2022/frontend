@@ -13,5 +13,4 @@ const Event = ({id, title, location, time, date} ) => {
         </div>
     )
 };
-
 export default Event;
