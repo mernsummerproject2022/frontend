@@ -3,31 +3,68 @@ import NumericInput from "react-numeric-input";
 import DatePicker from "react-datepicker";
 
 function EventCreate() {
-  const [startDate, setStartDate] = useState(new Date());
-  const [deadlineDate, setDeadlineDate] = useState(new Date());
+  const [event, setEventState] = useState({
+    name: "",
+    description: "",
+    location: { name: "", lat: null, long: null },
+    duration: null,
+    deadline: new Date(),
+    dateTime: new Date(),
+    maxPlayers: null,
+    eventType: "",
+  });
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(
+      `The entered event: ${event.name} \n ${event.description} \n ${
+        event.location.name
+      } \n ${event.duration} \n ${event.dateTime.toISOString()} \n ${
+        event.deadline
+      } \n ${event.maxPlayers} \n ${event.eventType}`
+    );
+  };
+
   return (
     <div>
       <div className="create-container">
         <h1 className="create-event-heading">Create a new event</h1>
 
-        <div className="create-event-form">
+        <form className="create-event-form" onSubmit={handleSubmit}>
           <input
             type="text"
             placeholder="Event title"
             name="name"
             autoComplete="none"
+            onChange={(e) =>
+              setEventState((prevState) => ({
+                ...prevState,
+                name: e.target.value,
+              }))
+            }
           />
           <input
             type="text"
             placeholder="Event type"
             name="eventType"
             autoComplete="none"
+            onChange={(e) =>
+              setEventState((prevState) => ({
+                ...prevState,
+                eventType: e.target.value,
+              }))
+            }
           />
 
-          <label for="startDate">Date of the event</label>
+          <label htmlFor="startDate">Date of the event</label>
           <DatePicker
-            selected={startDate}
-            onChange={(date) => setStartDate(date)}
+            selected={event.dateTime}
+            onChange={(date) =>
+              setEventState((prevState) => ({
+                ...prevState,
+                dateTime: date,
+              }))
+            }
             showTimeSelect
             timeFormat="HH:mm"
             timeIntervals={10}
@@ -37,10 +74,15 @@ function EventCreate() {
             id="startDate"
           />
 
-          <label for="deadline">Response Deadline</label>
+          <label htmlFor="deadline">Response Deadline</label>
           <DatePicker
-            selected={deadlineDate}
-            onChange={(date) => setDeadlineDate(date)}
+            selected={event.deadline}
+            onChange={(date) =>
+              setEventState((prevState) => ({
+                ...prevState,
+                deadline: date,
+              }))
+            }
             showTimeSelect
             timeFormat="HH:mm"
             timeIntervals={10}
@@ -55,23 +97,50 @@ function EventCreate() {
             placeholder="Location address"
             name="location"
             autoComplete="none"
+            onChange={(e) =>
+              setEventState((prevState) => ({
+                ...prevState,
+                location: { ...prevState.location, name: e.target.value },
+              }))
+            }
           />
 
-          <NumericInput min={0} placeholder="Max players" name="maxPlayers" />
+          <NumericInput
+            min={0}
+            placeholder="Max players"
+            name="maxPlayers"
+            onChange={(number) =>
+              setEventState((prevState) => ({
+                ...prevState,
+                maxPlayers: number,
+              }))
+            }
+          />
 
           <NumericInput
             min={0}
             placeholder="Duration in minutes"
             name="duration"
+            onChange={(number) =>
+              setEventState((prevState) => ({
+                ...prevState,
+                duration: number,
+              }))
+            }
           />
 
           <textarea
             name="description"
             placeholder="About this event..."
+            onChange={(e) =>
+              setEventState((prevState) => ({
+                ...prevState,
+                description: e.target.value,
+              }))
+            }
           ></textarea>
-        </div>
-
-        <input type="submit" className="create-btn" value={"CREATE"} />
+          <input type="submit" className="create-btn" value={"CREATE"} />
+        </form>
       </div>
     </div>
   );
