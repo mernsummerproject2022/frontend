@@ -4,24 +4,17 @@ import Searchbar from '../Components/Searchbar';
 import {AppProviderContext} from '../context/AppProvider';
 
 
-const EventsPage = () => {
+const MyEventsPage = () => {
     const {state,actions} = useContext(AppProviderContext);
-
     
-    // useEffect(() => {
-    //     actions.sendInvite({event: "62ee72f3d629d700221b80b3", user: "balicigabriel59@gmail.com"});
-    // }, []);
-
-
-    console.log(state.eventReducer);
-    console.log(state.userReducer)
+    
     return ( 
         <div className='events_page'>
-            <h1 className='newest_events'>Newest Events</h1>
+            <h1 className='newest_events'>My Events</h1>
             <Searchbar />
             <EventList state={state} actions={actions} />
         </div>
     )
 };
 
-export default EventsPage;
+export default MyEventsPage;
