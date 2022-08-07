@@ -1,11 +1,20 @@
 import React from "react";
 
-const EventDetails = ({ event }) => {
-  const invitesToRender = event.owner
+const EventDetails = ({ state,actions, event }) => {
+  const [emailInvite, setEmailInvite] = React.useState("");
+  const[emailRequest, setEmailRequest] = React.useState("");
+  let owner = false;
+
+  if (state.userReducer.user.id === event.owner._id) {
+    owner = true;
+  }
+  console.log(event);
+  const invitesToRender = owner
     ? event.invites
     : event.invites.filter((invite) => invite.accepted === "accepted");
-  const renderRequests = event.owner && event.requests.length ? true : false;
-    console.log(event);
+  const renderRequests = owner && event.requests.length ? true : false;
+  console.log(invitesToRender );
+
   return (
     <div className="wrapper">
       <div className="eventDetailsContainer">
@@ -30,11 +39,9 @@ const EventDetails = ({ event }) => {
         <h2>Invites</h2>
         {invitesToRender.map((invite, index) => (
           <h4 key={index} className="invite">
-            {invite.user}
+            {invite.user.email}
             <span
-              className={`${invite.accepted} ${
-                event.owner ? "owner" : "guest"
-              }`}
+              className={`${invite.accepted} ${owner ? "owner" : "guest"}`}
             ></span>
           </h4>
         ))}
@@ -44,13 +51,13 @@ const EventDetails = ({ event }) => {
             <h2>Requests</h2>
             {event.requests.map((request, index) => (
               <h4 key={index} className="invite">
-                {request.user}
+                {request.email}
               </h4>
             ))}
           </div>
         )}
-
-        {event.owner && (
+           
+        {owner && (
           <div>
             <h2>Invite a new friend</h2>
             <input
@@ -58,14 +65,19 @@ const EventDetails = ({ event }) => {
               placeholder="Email"
               name="event-title"
               autoComplete="none"
+              onChange={(e)=>{setEmailInvite(e.target.value)}}
             />
-            <button className="invite-btn" type="submit">
+            <button 
+            className="invite-btn" 
+            type="submit"
+            onClick={() => actions.sendInvite({event:event._id , user: emailInvite})}
+            >
               Send Invite
             </button>
           </div>
         )}
 
-        {!event.owner && (
+        {!owner && (
           <div>
             <h2>Request to join</h2>
             <input
@@ -73,12 +85,18 @@ const EventDetails = ({ event }) => {
               placeholder="Email"
               name="event-title"
               autoComplete="none"
+              onChange={(e)=>{setEmailRequest(e.target.value)}}
             />
-            <button className="invite-btn" type="submit">
+            <button 
+            className="invite-btn" 
+            type="submit" 
+            onClick={() => actions.sendRequest({event:event._id , user:emailRequest })}
+            >
               Send Request
             </button>
           </div>
         )}
+       
       </div>
     </div>
   );

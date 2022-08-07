@@ -12,5 +12,6 @@ export const appProviderActions = (dispatch) => {
     getMyEvents: (userId) => eventActions.getMyEvents(dispatch, userId),
     addEvent: (eventData) => eventActions.addEvent(dispatch, eventData),
     sendInvite: (inviteData) => inviteActions.sendInvite(dispatch, inviteData),
+    sendRequest: (requestData) => inviteActions.sendRequest(dispatch, requestData),
   };
 };

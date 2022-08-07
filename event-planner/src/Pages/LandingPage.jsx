@@ -1,7 +1,9 @@
-import React from "react";
+import React,{useContext} from "react";
 import { Link } from "react-router-dom";
+import {AppProviderContext} from '../context/AppProvider';
 
 const LandingPage = () => {
+  const {state,} = useContext(AppProviderContext);
   return (
     <div className="landing">
       <div className="landing-text">
@@ -11,12 +13,14 @@ const LandingPage = () => {
           <p>Join now the best event planning app to find out</p>
         </div>
         <div className="landing-buttons">
-          <Link to="/login" className="landing-btn">
+          {state.userReducer.auth !== true &&<Link to="/login" className="landing-btn">
             Login
-          </Link>
-          <Link to="/register" className="landing-btn">
+          </Link>}
+          {state.userReducer.auth !== true &&<Link to="/register" className="landing-btn">
             Register
-          </Link>
+          </Link>}
+          {state.userReducer.auth === true && <div className="heading">Logged as {state.userReducer.user.email}</div>}
+
         </div>
       </div>
     </div>

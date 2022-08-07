@@ -1,24 +1,14 @@
 import React, { createContext, useEffect, useReducer } from "react";
 import appReducer from "../reducers/appReducer";
 import { appProviderActions } from "../actions/appProvider";
-import { userReducer, eventReducer, inviteReducer } from "../utils/constants";
+import { userReducer, eventReducer} from "../utils/constants";
 export const AppProviderContext = createContext(null);
 
 const AppProvider = ({ children }) => {
-  const location={
-    name: "",
-    lat: null,
-    long: null
-  }
-
-  const eventType={
-    name: "",
-  }
-
+  
   const [state, dispatch] = useReducer(appReducer, {
     userReducer,
     eventReducer,
-    inviteReducer,
   });
   const actions = appProviderActions(dispatch);
 
@@ -56,12 +46,12 @@ const AppProvider = ({ children }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // useEffect(() => {
-  //   if (state.userReducer.auth === true) {
-  //     actions.getMyEvents(state.userReducer.user.id);
-  //   }
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [state.userReducer.auth]);
+  useEffect(() => {
+    if (state.userReducer.auth === true) {
+      actions.getMyEvents(state.userReducer.user.id);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <AppProviderContext.Provider

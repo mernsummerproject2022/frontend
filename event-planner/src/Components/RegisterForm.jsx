@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 const SignupSchema = Yup.object().shape({
   email: Yup.string().email("Invalid email").required("Required"),
   password: Yup.string().min(6, "Too Short!").required("Required"),
-  confirmPasswordPassword: Yup.string()
+  confirmPassword: Yup.string()
     .required("Required")
     .when("password", {
       is: (val) => (val && val.length > 0 ? true : false),
@@ -23,6 +23,7 @@ const SignupSchema = Yup.object().shape({
 const RegisterForm = ({ state, actions }) => {
   let navigate = useNavigate();
   console.log(localStorage.getItem("signup"));
+
   const handleSubmit = async (values) => {
     await actions.signUp(values);
     window.location.reload();
@@ -35,12 +36,12 @@ const RegisterForm = ({ state, actions }) => {
       alert("Signup successful");
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [state.userReducer.signup]);
+  }, []);
 
   return (
     <div>
       <Formik
-        initialValues={{ email: "", password: "", confirmPasswordPassword: "" }}
+        initialValues={{ email: "", password: "", confirmPassword: "" }}
         // pass api results to initialValues as props
         validationSchema={SignupSchema}
         onSubmit={handleSubmit}

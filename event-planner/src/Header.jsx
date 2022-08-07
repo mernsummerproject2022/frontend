@@ -23,7 +23,7 @@ const Header = () => {
       </h1>
       <div className="navlinks">
         {state.userReducer.auth === true && <Link to="/create">Create Event</Link>}
-        <Link to="/myEvents">My events</Link>
+        {state.userReducer.auth === true && <Link to="/myEvents">My events</Link>}
         <Link to="/events">All events</Link>
         {state.userReducer.auth === false  && <Link to="/login">Sign in</Link>}
         {state.userReducer.auth === true && <div className="navlinks" onClick={() => handleLogOut()}> <Link to="/login">Sign Out</Link></div>}
