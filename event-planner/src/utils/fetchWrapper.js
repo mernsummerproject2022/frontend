@@ -1,11 +1,5 @@
 import { APPLICATION_JSON } from "../utils/constants";
-export const fetchWrapper = { get, post, put };
-
-const commonHeaders = {
-  "Content-Type": APPLICATION_JSON,
-  Accept: APPLICATION_JSON,
-  Authorization: localStorage.getItem("token"),
-};
+export const fetchWrapper = { get, post};
 
 async function get(url) {
   const requestOptions = {
@@ -32,12 +26,6 @@ async function post(url, body) {
     withCredentials: true,
     body: JSON.stringify(body),
   };
-  const response = await fetch(url, requestOptions);
-  return response;
-}
-
-async function put(url, body) {
-  const requestOptions = commonHeaders;
   const response = await fetch(url, requestOptions);
   return response;
 }

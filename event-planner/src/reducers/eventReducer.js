@@ -7,6 +7,10 @@ import {
   GET_MY_EVENTS_ERROR,
   ADD_EVENT_ERROR,
   ADD_EVENT_SUCCESS,
+  SEND_INVITE_SUCCESS,
+   SEND_INVITE_ERROR,
+   SEND_REQUEST_SUCCESS,
+   SEND_REQUEST_ERROR 
 } from "../actions/types";
 import { eventReducer as initialState } from "../utils/constants";
 
@@ -60,6 +64,30 @@ const eventReducer = (state = initialState, action) => {
       state.events.push(action.payload);
       return {
         ...state,
+      };
+    }
+    case SEND_INVITE_SUCCESS: {
+      state.event=action.payload;
+      return {
+        ...state,
+      };
+    }
+    case SEND_INVITE_ERROR: {
+      return {
+        ...state,
+        error: action.payload,
+      };
+    }
+    case SEND_REQUEST_SUCCESS: {
+      state.event.requests.push(action.payload);
+      return {
+        ...state,
+      };
+    }
+    case SEND_REQUEST_ERROR: {
+      return {
+        ...state,
+        error: action.payload,
       };
     }
 

@@ -1,16 +1,11 @@
-import React , {useContext,useEffect} from 'react';
+import React , {useContext} from 'react';
 import EventList from '../Components/EventList';
 import Searchbar from '../Components/Searchbar';
 import {AppProviderContext} from '../context/AppProvider';
 
 
 const EventsPage = () => {
-    const {state,actions} = useContext(AppProviderContext);
-
-    
-    // useEffect(() => {
-    //     actions.sendInvite({event: "62ee72f3d629d700221b80b3", user: "balicigabriel59@gmail.com"});
-    // }, []);
+    const {state,} = useContext(AppProviderContext);
 
     console.log(state.eventReducer.myEvents);
     console.log(state.userReducer)

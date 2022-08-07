@@ -1,7 +1,7 @@
 import React, { createContext, useEffect, useReducer } from "react";
 import appReducer from "../reducers/appReducer";
 import { appProviderActions } from "../actions/appProvider";
-import { userReducer, eventReducer, inviteReducer } from "../utils/constants";
+import { userReducer, eventReducer} from "../utils/constants";
 export const AppProviderContext = createContext(null);
 
 const AppProvider = ({ children }) => {
@@ -9,7 +9,6 @@ const AppProvider = ({ children }) => {
   const [state, dispatch] = useReducer(appReducer, {
     userReducer,
     eventReducer,
-    inviteReducer,
   });
   const actions = appProviderActions(dispatch);
 

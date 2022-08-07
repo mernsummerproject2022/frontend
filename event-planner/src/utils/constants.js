@@ -20,6 +20,7 @@ export const userReducer = {
 };
 
 export const eventReducer = {
+  error:null,
   events: [],
   myEvents: [],
   event: {
@@ -35,8 +36,4 @@ export const eventReducer = {
     owner:{id: null, email: null},
     requests: [],
   },
-};
-
-export const inviteReducer = {
-  error: null,
 };
