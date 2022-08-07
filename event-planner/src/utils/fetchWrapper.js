@@ -7,8 +7,6 @@ const commonHeaders = {
   Authorization: localStorage.getItem("token"),
 };
 
-
-
 async function get(url) {
   const requestOptions = {
     method: "GET",
@@ -26,7 +24,7 @@ async function get(url) {
 async function post(url, body) {
   const requestOptions = {
     method: "POST",
-    headers:{
+    headers: {
       "Content-Type": APPLICATION_JSON,
       Accept: APPLICATION_JSON,
       Authorization: localStorage.getItem("token"),
@@ -48,16 +46,18 @@ export const handleResponse = async (dispatch, response, type) => {
   const data = await response.json();
   if (!response.ok) {
     console.log(data);
-    alert(data.detail);
+    if (data.detail !== "No event was found") {
+      alert(data.detail);
+    }
     return dispatch({
       type: `${type}_ERROR`,
       payload: data,
     });
   }
-  if(type==="SIGN_IN"){
+  if (type === "SIGN_IN") {
     localStorage.setItem("token", data.token);
   }
-  if(type==="SIGN_UP"){
+  if (type === "SIGN_UP") {
     localStorage.setItem("signup", true);
   }
 

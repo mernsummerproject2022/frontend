@@ -1,11 +1,16 @@
 import React from "react";
 
-const EventDetails = ({ event }) => {
-  const invitesToRender = event.owner
+const EventDetails = ({ state, event }) => {
+  let owner = false;
+
+  if (state.userReducer.user.id === event.owner._id) {
+    owner = true;
+  }
+
+  const invitesToRender = owner
     ? event.invites
     : event.invites.filter((invite) => invite.accepted === "accepted");
-  const renderRequests = event.owner && event.requests.length ? true : false;
-    console.log(event);
+  const renderRequests = owner && event.requests.length ? true : false;
   return (
     <div className="wrapper">
       <div className="eventDetailsContainer">
@@ -32,9 +37,7 @@ const EventDetails = ({ event }) => {
           <h4 key={index} className="invite">
             {invite.user}
             <span
-              className={`${invite.accepted} ${
-                event.owner ? "owner" : "guest"
-              }`}
+              className={`${invite.accepted} ${owner ? "owner" : "guest"}`}
             ></span>
           </h4>
         ))}
@@ -50,7 +53,7 @@ const EventDetails = ({ event }) => {
           </div>
         )}
 
-        {event.owner && (
+        {owner && (
           <div>
             <h2>Invite a new friend</h2>
             <input
@@ -65,7 +68,7 @@ const EventDetails = ({ event }) => {
           </div>
         )}
 
-        {!event.owner && (
+        {!owner && (
           <div>
             <h2>Request to join</h2>
             <input

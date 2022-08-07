@@ -47,12 +47,12 @@ const AppProvider = ({ children }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // useEffect(() => {
-  //   if (state.userReducer.auth === true) {
-  //     actions.getMyEvents(state.userReducer.user.id);
-  //   }
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [state.userReducer.auth]);
+  useEffect(() => {
+    if (state.userReducer.auth === true) {
+      actions.getMyEvents(state.userReducer.user.id);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <AppProviderContext.Provider

@@ -12,7 +12,7 @@ const MyEventsPage = () => {
         <div className='events_page'>
             <h1 className='newest_events'>My Events</h1>
             <Searchbar />
-            <EventList state={state} actions={actions} />
+            <EventList events={state.eventReducer.myEvents} />
         </div>
     )
 };

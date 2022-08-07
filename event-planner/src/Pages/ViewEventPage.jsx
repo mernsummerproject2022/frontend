@@ -16,7 +16,7 @@ const EventView = () => {
     console.log(event);
     return (
         <div className="events_page">
-          <EventDetails event={event} />
+          <EventDetails state={state} event={event} />
         </div>
       );
 };
