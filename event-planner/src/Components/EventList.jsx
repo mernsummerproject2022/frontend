@@ -1,14 +1,31 @@
 import React from "react";
 import Event from "../Components/Event";
-const EventList = ({ state, actions }) => {
-  // let events=state.eventReducer.events[0];
-  console.log(state.eventReducer.events);
+
+const filterEvents = ( arrToFilter, filtersArr ) => {
+    
+  if(!filtersArr || !filtersArr.length){
+      return arrToFilter
+  }
+
+  let res = [];
+
+  filtersArr.forEach(filter => {
+      res = [...res, ...(arrToFilter.filter((event) => {
+          return event.type.toLowerCase() === filter;
+      }))]
+  });
+
+  return res;
+};
+
+const EventList = ({ filters, events }) => {
+  const filteredEvents = filterEvents(events, filters);
 
   return (
     <div className="events_page">
       <h1 className="newest_events">Newest Events</h1>
-      {state.eventReducer.events.map((event, index) => {
-        return (
+      {events.length > 0 &&
+        filteredEvents.map((event, index) => (
           <Event
             key={index}
             id={event._id}
@@ -17,24 +34,11 @@ const EventList = ({ state, actions }) => {
             time={event.dateTime}
             date={event.dateTime}
           />
-        );
-      })}
+        ))}
+      {events.length === 0 && <h1>No events found</h1>}
     </div>
   );
 };
 
-// return (
-//     JSON.parse(events).map(event =>
-//         <Event key={`event-${event.id}`} title={event.title} location={event.location} time={event.time} date={event.date}/>
-//     )
-// )
-//};
-
-// return (
-//     JSON.parse(events).map(event =>
-//         <Event key={`event-${event.id}`} title={event.title} location={event.location} time={event.time} date={event.date}/>
-//     )
-// )
-//};
-
 export default EventList;
+

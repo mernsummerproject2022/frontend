@@ -1,27 +1,32 @@
-import React , {useContext,useEffect} from 'react';
-import EventList from '../Components/EventList';
-import Searchbar from '../Components/Searchbar';
-import {AppProviderContext} from '../context/AppProvider';
-
+import React, { useContext, useState } from "react";
+import EventList from "../Components/EventList";
+import Searchbar from "../Components/Searchbar";
+import { AppProviderContext } from "../context/AppProvider";
 
 const EventsPage = () => {
-    const {state,actions} = useContext(AppProviderContext);
+  const { state } = useContext(AppProviderContext);
 
+  const [filterBy, setFilterBy] = useState([]);
     
-    // useEffect(() => {
-    //     actions.sendInvite({event: "62ee72f3d629d700221b80b3", user: "balicigabriel59@gmail.com"});
-    // }, []);
-
-
-    console.log(state.eventReducer);
-    console.log(state.userReducer)
-    return ( 
-        <div className='events_page'>
-            <h1 className='newest_events'>Newest Events</h1>
-            <Searchbar />
-            <EventList state={state} actions={actions} />
-        </div>
-    )
+    const toggleFilter = (payload) => {
+        let filtersArr;
+        if(payload.action === "add"){
+            filtersArr = [...filterBy, payload.filter];
+        }
+        else{
+            const filterIndex = filterBy.indexOf(payload.filter)
+            console.log("filter Index: ", filterIndex, filterBy)
+            filtersArr = [...filterBy];
+            filtersArr.splice(filterIndex, 1);
+        }
+        setFilterBy(filtersArr);
+    }
+  return (
+    <div className="events_page">
+      <Searchbar toggleFilter={toggleFilter} filterBy={filterBy} filterList={["football", "tennis", "volleyball"]}/>
+      <EventList filters={filterBy} events={state.eventReducer.events} />
+    </div>
+  );
 };
 
 export default EventsPage;
