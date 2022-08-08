@@ -12,20 +12,30 @@
   justify-content: center;
 }
 
-
-.search{
-    margin: 2rem 0 0.6rem 2rem;
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
+.search {
+  margin: 5rem 0 0.6rem 2rem;
+  display: grid;
+  gap: 0.6rem;
 }
 
-.search select {
-  border: 1px solid #000;
-  background-color: #000;
+
+.search label {
+  padding: 0 0 3rem 0;
+}
+
+.chk {
+  display: flex;
   color: #fff;
-  border-radius: 3px;
-  padding: 0.1rem;
+  flex-wrap: wrap;
+  background-color: #000;
+  padding: 2rem;
+  border-radius: 4px;
+  gap: 1.4rem;
+  font-size: 1.1rem;
+}
+
+.chk > * {
+  flex: 1 1 10rem;
 }
 
 .flex-test {
