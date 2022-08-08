@@ -21,13 +21,16 @@ const EventDetails = ({ state, actions, event }) => {
       <div className="eventDetailsContainer">
         <h1>{event.name}</h1>
         <h4>{event.eventType.name}</h4>
-        <h2>{event.description}</h2>
+        <h2 className="event-description">{event.description}</h2>
         <h3>
           Location:<span>{event.location.name}</span>
         </h3>
         <h3>
           When:
-          <span>{moment(event.dateTime).utc().format("YYYY-MM-DD")}</span>{" "}
+          <span>{moment(event.dateTime).utc().format("DD.MM.YYYY")}</span>{" "}
+        </h3>
+        <h3>
+          Time :<span>{moment(event.dateTime).format("HH:mm")}</span>{" "}
         </h3>
         <h3>
           Duration:<span>{event.duration} minutes</span>
