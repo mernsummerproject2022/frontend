@@ -1,18 +1,20 @@
 import React from "react";
 import Event from "../Components/Event";
 
-const filterEvents = ( arrToFilter, filtersArr ) => {
-    
-  if(!filtersArr || !filtersArr.length){
-      return arrToFilter
+const filterEvents = (arrToFilter, filtersArr) => {
+  if (!filtersArr || !filtersArr.length) {
+    return arrToFilter;
   }
 
   let res = [];
 
-  filtersArr.forEach(filter => {
-      res = [...res, ...(arrToFilter.filter((event) => {
-          return event.type.toLowerCase() === filter;
-      }))]
+  filtersArr.forEach((filter) => {
+    res = [
+      ...res,
+      ...arrToFilter.filter((event) => {
+        return event.eventType.name.toLowerCase() === filter;
+      }),
+    ];
   });
 
   return res;
@@ -41,4 +43,3 @@ const EventList = ({ filters, events }) => {
 };
 
 export default EventList;
-

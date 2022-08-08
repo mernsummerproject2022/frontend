@@ -7,23 +7,35 @@ const EventsPage = () => {
   const { state } = useContext(AppProviderContext);
 
   const [filterBy, setFilterBy] = useState([]);
-    
-    const toggleFilter = (payload) => {
-        let filtersArr;
-        if(payload.action === "add"){
-            filtersArr = [...filterBy, payload.filter];
-        }
-        else{
-            const filterIndex = filterBy.indexOf(payload.filter)
-            console.log("filter Index: ", filterIndex, filterBy)
-            filtersArr = [...filterBy];
-            filtersArr.splice(filterIndex, 1);
-        }
-        setFilterBy(filtersArr);
+
+  const toggleFilter = (payload) => {
+    let filtersArr;
+    if (payload.action === "add") {
+      filtersArr = [...filterBy, payload.filter];
+    } else {
+      const filterIndex = filterBy.indexOf(payload.filter);
+      console.log("filter Index: ", filterIndex, filterBy);
+      filtersArr = [...filterBy];
+      filtersArr.splice(filterIndex, 1);
     }
+    setFilterBy(filtersArr);
+  };
   return (
     <div className="events_page">
-      <Searchbar toggleFilter={toggleFilter} filterBy={filterBy} filterList={["football", "tennis", "volleyball"]}/>
+      <Searchbar
+        toggleFilter={toggleFilter}
+        filterBy={filterBy}
+        filterList={[
+          "football",
+          "basketball",
+          "tennis",
+          "volleyball",
+          "rugby",
+          "cycling",
+          "swimming",
+          "bowling",
+        ]}
+      />
       <EventList filters={filterBy} events={state.eventReducer.events} />
     </div>
   );
