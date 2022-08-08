@@ -1,4 +1,3 @@
-
 import React, { useState, useContext } from "react";
 import NumericInput from "react-numeric-input";
 import DatePicker from "react-datepicker";

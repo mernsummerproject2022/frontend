@@ -1,24 +1,18 @@
 .login-container {
-  max-width: 40rem;
-  max-height: 25rem;
-  background-color: #000;
-  color: #fff;
+  background-color: rgb(194, 155, 82);
+  color: #000;
   display: flex;
-  border-radius: 10px;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-
-  margin: auto;
+  padding: 3rem;
+  max-width: 40rem;
+  box-shadow: 0px 1px 25px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  margin: 10rem auto;
 }
 
 .error {
-  color: red;
+  color: rgb(148, 0, 0);
   font-weight: 500;
 }
 
@@ -69,4 +63,18 @@ label h3 {
 .submit-btn:hover {
   cursor: pointer;
   background-color: rgb(237, 237, 237);
+}
+
+/*MEDIA QUERIES*/
+
+@media screen and (max-width: 768px) {
+  .login-area {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .login-title {
+    font-size: 1.4rem;
+  }
 }

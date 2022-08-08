@@ -27,6 +27,7 @@ const EventsPage = () => {
       <EventList filters={filterBy} events={state.eventReducer.myEvents} />
     </div>
   );
+
 };
 
 export default EventsPage;
