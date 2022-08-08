@@ -1,8 +1,5 @@
 import React from "react";
 import moment from "moment";
-import toast, { Toaster } from "solid-toast";
-
-const notify = () => toast("Here is your toast.");
 
 const EventDetails = ({ state, actions, event }) => {
   const [emailInvite, setEmailInvite] = React.useState("");
@@ -19,7 +16,7 @@ const EventDetails = ({ state, actions, event }) => {
 
   const handleSubmitRequest = () => {
     actions.sendRequest({ event: event._id, user: emailRequest });
-    notify();
+    alert("Request sent");
   };
 
   return (
@@ -113,7 +110,6 @@ const EventDetails = ({ state, actions, event }) => {
           )}
         </div>
       </div>
-      <Toaster />
     </div>
   );
 };
