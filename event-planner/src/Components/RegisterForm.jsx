@@ -22,7 +22,6 @@ const SignupSchema = Yup.object().shape({
 
 const RegisterForm = ({ state, actions }) => {
   let navigate = useNavigate();
-  console.log(localStorage.getItem("signup"));
 
   const handleSubmit = async (values) => {
     await actions.signUp(values);
@@ -33,7 +32,6 @@ const RegisterForm = ({ state, actions }) => {
     if (localStorage.getItem("signup") === "true") {
       localStorage.setItem("signup", false);
       navigate("/login");
-      alert("Signup successful");
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

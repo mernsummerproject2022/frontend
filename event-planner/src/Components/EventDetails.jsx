@@ -5,16 +5,19 @@ const EventDetails = ({ state, actions, event }) => {
   const [emailInvite, setEmailInvite] = React.useState("");
   const [emailRequest, setEmailRequest] = React.useState("");
   let owner = false;
-
   if (state.userReducer.user.id === event.owner._id) {
     owner = true;
   }
-  console.log(event);
+
   const invitesToRender = owner
     ? event.invites
     : event.invites.filter((invite) => invite.accepted === "accepted");
   const renderRequests = owner && event.requests.length ? true : false;
-  console.log(invitesToRender);
+
+  const handleSubmitRequest = () => {
+    actions.sendRequest({ event: event._id, user: emailRequest });
+    alert("Request sent");
+  };
 
   return (
     <div className="wrapper">
@@ -102,9 +105,7 @@ const EventDetails = ({ state, actions, event }) => {
               <button
                 className="invite-btn"
                 type="submit"
-                onClick={() =>
-                  actions.sendRequest({ event: event._id, user: emailRequest })
-                }
+                onClick={handleSubmitRequest}
               >
                 Send Request
               </button>

@@ -20,6 +20,7 @@ const EventsPage = () => {
     }
     setFilterBy(filtersArr);
   };
+
   return (
     <div className="events_page">
       <Searchbar

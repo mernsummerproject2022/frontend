@@ -22,14 +22,6 @@ function EventCreate() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(
-      `The entered event: ${event.name} \n ${event.description} \n ${
-        event.location.name
-      } \n ${event.duration} \n ${event.dateTime.toISOString()} \n ${
-        event.deadline
-      } \n ${event.maxPlayers} \n ${event.eventType}`
-    );
-
     actions.addEvent({
       name: event.name,
       description: event.description,

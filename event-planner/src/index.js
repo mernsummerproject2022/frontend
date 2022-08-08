@@ -11,6 +11,7 @@ import "./Styling/event-create.css";
 import "./Styling/event-details.css";
 import "./Styling/checkbox.css";
 import "react-datepicker/dist/react-datepicker.css";
+import "react-notifications/lib/notifications.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 
