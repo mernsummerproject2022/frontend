@@ -3,6 +3,7 @@
   color: #000;
   border-radius: 10px;
   gap: 2rem;
+  min-width: 70%;
   padding: 4rem;
   margin: 7rem;
   background-color: rgb(194, 155, 82);
@@ -12,23 +13,27 @@
 .invites-container {
   display: flex;
   padding: 2rem;
+  min-width: 30rem;
 }
 
 .eventDetailsContainer {
   border-right: #000 solid 1px;
   padding: 2rem;
   display: flex;
+  flex-grow: 1;
   flex-direction: column;
   gap: 1rem;
 }
 
-.eventDetailsContainer h1 {
-  text-align: center;
+.event-description {
+  font-size: 1rem;
+  word-wrap: break-word;
+  margin-top: 1rem;
+  max-width: 30rem;
 }
 
-.eventDetailsContainer h2 {
-  margin-top: 1rem;
-  margin-bottom: 1rem;
+.eventDetailsContainer h1 {
+  text-align: center;
 }
 
 .eventDetailsContainer h4 {
@@ -47,6 +52,8 @@
 
 .invite {
   font-weight: 400;
+  word-wrap: break-word;
+  margin: 0.6rem;
 }
 
 .undefined::after,
@@ -133,5 +140,15 @@ input:focus {
   .eventDetailsContainer {
     border-bottom: #000 solid 1px;
     border-right: none;
+  }
+
+  .invite {
+    width: 25rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .invite {
+    width: 20rem;
   }
 }

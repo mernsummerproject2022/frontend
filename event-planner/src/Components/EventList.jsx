@@ -1,15 +1,33 @@
 import React from "react";
 import Event from "../Components/Event";
 
-const EventList = (props) => {
-  const events = props.events;
-  console.log(events);
+const filterEvents = (arrToFilter, filtersArr) => {
+  if (!filtersArr || !filtersArr.length) {
+    return arrToFilter;
+  }
+
+  let res = [];
+
+  filtersArr.forEach((filter) => {
+    res = [
+      ...res,
+      ...arrToFilter.filter((event) => {
+        return event.eventType.name.toLowerCase() === filter;
+      }),
+    ];
+  });
+
+  return res;
+};
+
+const EventList = ({ filters, events }) => {
+  const filteredEvents = filterEvents(events, filters);
 
   return (
     <div className="events_page">
       <h1 className="newest_events">Newest Events</h1>
       {events.length > 0 &&
-        events.map((event, index) => (
+        filteredEvents.map((event, index) => (
           <Event
             key={index}
             id={event._id}

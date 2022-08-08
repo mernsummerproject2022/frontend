@@ -1,15 +1,16 @@
 import React from 'react';
+import CheckBox from './CheckBox';
 
-const Searchbar = () => {
+const Searchbar = ({toggleFilter, filterList, filterBy}) => {
     return ( 
         <div className='search'>
-            <label>Search by:</label>
-            <select>
-                <option>date</option>
-                <option>title</option>
-                <option>language</option>
-                <option>location</option>
-            </select>
+            <label>Event Type:</label>
+            {filterList.map((filter, index) => {
+                    return <CheckBox key={index + (new Date().getTime())} 
+                    label={filter} 
+                    filter={filter}
+                    check={filterBy.includes(filter)} 
+                    toggleFilter={toggleFilter}/> })}
         </div>
     )
 };

@@ -13,7 +13,10 @@ const Event = ({ id, title, location, time, date }) => {
         </h3>
         <h3>
           When:
-          <span>{moment(date).utc().format("YYYY-MM-DD")}</span>{" "}
+          <span>{moment(date).utc().format("DD.MM.YYYY")}</span>
+        </h3>
+        <h3>
+          Time :<span>{moment(date).format("HH:mm")}</span>{" "}
         </h3>
         <Link to={route}>View details</Link>
       </div>
