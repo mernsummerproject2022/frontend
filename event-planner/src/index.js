@@ -10,6 +10,7 @@ import "./Styling/events-page.css";
 import "./Styling/event-create.css";
 import "./Styling/event-details.css";
 import "react-datepicker/dist/react-datepicker.css";
+import "react-notifications/lib/notifications.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 

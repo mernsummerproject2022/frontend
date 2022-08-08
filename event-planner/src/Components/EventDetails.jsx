@@ -1,20 +1,26 @@
 import React from "react";
 import moment from "moment";
+import toast, { Toaster } from "solid-toast";
+
+const notify = () => toast("Here is your toast.");
 
 const EventDetails = ({ state, actions, event }) => {
   const [emailInvite, setEmailInvite] = React.useState("");
   const [emailRequest, setEmailRequest] = React.useState("");
   let owner = false;
-
   if (state.userReducer.user.id === event.owner._id) {
     owner = true;
   }
-  console.log(event);
+
   const invitesToRender = owner
     ? event.invites
     : event.invites.filter((invite) => invite.accepted === "accepted");
   const renderRequests = owner && event.requests.length ? true : false;
-  console.log(invitesToRender);
+
+  const handleSubmitRequest = () => {
+    actions.sendRequest({ event: event._id, user: emailRequest });
+    notify();
+  };
 
   return (
     <div className="wrapper">
@@ -99,9 +105,7 @@ const EventDetails = ({ state, actions, event }) => {
               <button
                 className="invite-btn"
                 type="submit"
-                onClick={() =>
-                  actions.sendRequest({ event: event._id, user: emailRequest })
-                }
+                onClick={handleSubmitRequest}
               >
                 Send Request
               </button>
@@ -109,6 +113,7 @@ const EventDetails = ({ state, actions, event }) => {
           )}
         </div>
       </div>
+      <Toaster />
     </div>
   );
 };

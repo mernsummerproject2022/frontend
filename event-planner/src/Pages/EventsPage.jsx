@@ -6,8 +6,6 @@ import { AppProviderContext } from "../context/AppProvider";
 const EventsPage = () => {
   const { state } = useContext(AppProviderContext);
 
-  console.log(state.eventReducer.myEvents);
-  console.log(state.userReducer);
   return (
     <div className="events_page">
       <Searchbar />
