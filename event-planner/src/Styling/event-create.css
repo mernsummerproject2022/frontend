@@ -1,18 +1,14 @@
 .create-container {
+  background-color: rgb(194, 155, 82);
   color: #000;
   display: flex;
   flex-direction: column;
   align-items: center;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  max-width: 40rem;
-  height: 45rem;
+  padding: 3rem;
+  max-width: 60rem;
   box-shadow: 0px 1px 25px 6px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
-  margin: auto;
+  margin: 3rem auto;
 }
 
 .create-event-heading {
@@ -23,12 +19,16 @@
   display: flex;
   flex-direction: column;
   gap: 1.6rem;
-  width: 50%;
+  width: 70%;
   margin-top: 3rem;
 }
 
 .create-event-form input {
   padding: 0.6rem;
+  outline: none;
+  border: none;
+  border-radius: 3px;
+  box-shadow: 0px 1px 15px 6px rgba(0, 0, 0, 0.1);
 }
 
 .create-event-form textarea {
@@ -48,4 +48,18 @@
 .create-btn:hover {
   cursor: pointer;
   background-color: rgb(44, 44, 44);
+}
+
+/*MEDIA QUERIES*/
+
+@media screen and (max-width: 768px) {
+  .create-event-form {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .create-event-heading {
+    font-size: 1.4rem;
+  }
 }

@@ -1,8 +1,9 @@
 import React from "react";
+import moment from "moment";
 
-const EventDetails = ({ state,actions, event }) => {
+const EventDetails = ({ state, actions, event }) => {
   const [emailInvite, setEmailInvite] = React.useState("");
-  const[emailRequest, setEmailRequest] = React.useState("");
+  const [emailRequest, setEmailRequest] = React.useState("");
   let owner = false;
 
   if (state.userReducer.user.id === event.owner._id) {
@@ -13,7 +14,7 @@ const EventDetails = ({ state,actions, event }) => {
     ? event.invites
     : event.invites.filter((invite) => invite.accepted === "accepted");
   const renderRequests = owner && event.requests.length ? true : false;
-  console.log(invitesToRender );
+  console.log(invitesToRender);
 
   return (
     <div className="wrapper">
@@ -26,7 +27,7 @@ const EventDetails = ({ state,actions, event }) => {
         </h3>
         <h3>
           When:
-          <span>{event.dateTime}</span>{" "}
+          <span>{moment(event.dateTime).utc().format("YYYY-MM-DD")}</span>{" "}
         </h3>
         <h3>
           Duration:<span>{event.duration} minutes</span>
@@ -35,68 +36,78 @@ const EventDetails = ({ state,actions, event }) => {
           Max Participants:<span>{event.maxPlayers}</span>
         </h3>
       </div>
-      <div>
-        <h2>Invites</h2>
-        {invitesToRender.map((invite, index) => (
-          <h4 key={index} className="invite">
-            {invite.user.email}
-            <span
-              className={`${invite.accepted} ${owner ? "owner" : "guest"}`}
-            ></span>
-          </h4>
-        ))}
 
-        {renderRequests && (
-          <div>
-            <h2>Requests</h2>
-            {event.requests.map((request, index) => (
-              <h4 key={index} className="invite">
-                {request.email}
-              </h4>
-            ))}
-          </div>
-        )}
-           
-        {owner && (
-          <div>
-            <h2>Invite a new friend</h2>
-            <input
-              type="text"
-              placeholder="Email"
-              name="event-title"
-              autoComplete="none"
-              onChange={(e)=>{setEmailInvite(e.target.value)}}
-            />
-            <button 
-            className="invite-btn" 
-            type="submit"
-            onClick={() => actions.sendInvite({event:event._id , user: emailInvite})}
-            >
-              Send Invite
-            </button>
-          </div>
-        )}
+      <div className="invites-container">
+        <div>
+          <h2>Invites</h2>
+          {invitesToRender.map((invite, index) => (
+            <h4 key={index} className="invite">
+              {invite.user.email}
+              <span
+                className={`${invite.accepted} ${owner ? "owner" : "guest"}`}
+              ></span>
+            </h4>
+          ))}
 
-        {!owner && (
-          <div>
-            <h2>Request to join</h2>
-            <input
-              type="text"
-              placeholder="Email"
-              name="event-title"
-              autoComplete="none"
-              onChange={(e)=>{setEmailRequest(e.target.value)}}
-            />
-            <button 
-            className="invite-btn" 
-            type="submit" 
-            onClick={() => actions.sendRequest({event:event._id , user:emailRequest })}
-            >
-              Send Request
-            </button>
-          </div>
-        )}
-       
+          {renderRequests && (
+            <div>
+              <h2>Requests</h2>
+              {event.requests.map((request, index) => (
+                <h4 key={index} className="invite">
+                  {request.email}
+                </h4>
+              ))}
+            </div>
+          )}
+
+          {owner && (
+            <div>
+              <h2 className="invite-friend-text">Invite a new friend</h2>
+              <input
+                type="text"
+                placeholder="Email"
+                name="event-title"
+                autoComplete="none"
+                onChange={(e) => {
+                  setEmailInvite(e.target.value);
+                }}
+              />
+              <button
+                className="invite-btn"
+                type="submit"
+                onClick={() =>
+                  actions.sendInvite({ event: event._id, user: emailInvite })
+                }
+              >
+                Send Invite
+              </button>
+            </div>
+          )}
+
+          {!owner && (
+            <div>
+              <h2 className="invite-friend-text">Request to join</h2>
+              <input
+                type="text"
+                placeholder="Email"
+                name="event-title"
+                autoComplete="none"
+                onChange={(e) => {
+                  setEmailRequest(e.target.value);
+                }}
+              />
+              <button
+                className="invite-btn"
+                type="submit"
+                onClick={() =>
+                  actions.sendRequest({ event: event._id, user: emailRequest })
+                }
+              >
+                Send Request
+              </button>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );
