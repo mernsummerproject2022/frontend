@@ -29,6 +29,7 @@
   font-size: 1rem;
   word-wrap: break-word;
   margin-top: 1rem;
+  max-width: 30rem;
 }
 
 .eventDetailsContainer h1 {
