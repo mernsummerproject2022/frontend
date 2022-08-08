@@ -79,3 +79,27 @@ code {
   background-color: #fff;
   color: #000;
 }
+
+/*MEDIA QUERIES*/
+
+@media screen and (max-width: 1025px) {
+  .heading {
+    width: 90%;
+  }
+
+  .header {
+    background-color: red;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .heading {
+    width: 90%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .heading {
+    font-size: 1.4rem;
+  }
+}

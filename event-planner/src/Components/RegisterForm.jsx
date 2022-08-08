@@ -30,7 +30,7 @@ const RegisterForm = ({ state, actions }) => {
   };
 
   useEffect(() => {
-    if (localStorage.getItem("signup")==="true") {
+    if (localStorage.getItem("signup") === "true") {
       localStorage.setItem("signup", false);
       navigate("/login");
       alert("Signup successful");
@@ -56,7 +56,7 @@ const RegisterForm = ({ state, actions }) => {
           <div className="register-container">
             <form onSubmit={handleSubmit}>
               <div className="register-area">
-                <h1>Register a new account</h1>
+                <h1 className="register-title">Register a new account</h1>
 
                 <div className="email-area">
                   <label>
@@ -72,7 +72,7 @@ const RegisterForm = ({ state, actions }) => {
                     />
                   </label>
                   {touched.email && errors.email && (
-                    <p style={{ color: "red" }}>{errors.email}</p>
+                    <p style={{ color: "rgb(148, 0, 0)" }}>{errors.email}</p>
                   )}
                 </div>
 
@@ -92,7 +92,7 @@ const RegisterForm = ({ state, actions }) => {
                     />
                   </label>
                   {touched.password && errors.password && (
-                    <p style={{ color: "red" }}>{errors.password}</p>
+                    <p style={{ color: "rgb(148, 0, 0)" }}>{errors.password}</p>
                   )}
                 </div>
 
@@ -114,7 +114,9 @@ const RegisterForm = ({ state, actions }) => {
                     />
                   </label>
                   {touched.confirmPassword && errors.confirmPassword && (
-                    <p style={{ color: "red" }}>{errors.confirmPassword}</p>
+                    <p style={{ color: "rgb(148, 0, 0)" }}>
+                      {errors.confirmPassword}
+                    </p>
                   )}
                 </div>
 
