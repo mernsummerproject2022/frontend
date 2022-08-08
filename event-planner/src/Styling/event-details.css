@@ -112,6 +112,16 @@ input:focus {
   cursor: pointer;
   border: none;
   border-radius: 5px;
+  padding: 3px 6px;
+  transition: 0.3s all;
+}
+
+input + .invite-btn {
+  background-color: #fff;
+  color: #000;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
   margin-left: 5px;
   padding: 3px 6px;
   transition: 0.3s all;
